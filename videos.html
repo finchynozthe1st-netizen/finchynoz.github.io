@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Videos | FinchyNoz </title>
+<meta
+    name="description"
+    content="The official FinchyNoz website. Gaming, music, videos, archives and Project 3008."
+>
+
+<meta
+    name="keywords"
+    content="FinchyNoz, Project 3008, gaming, music, YouTube, VAZEN, ItsJonathan"
+>
+
+<meta name="author" content="FinchyNoz">
+
+<meta property="og:title" content="FinchyNoz">
+
+<meta
+    property="og:description"
+    content="Gaming, music, archives and Project 3008."
+>
+
+<meta
+    property="og:image"
+    content="https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/logo.png"
+>
+
+<meta
+    property="og:url"
+    content="https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/"
+>
+
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="./logo.png">
+<link rel="preload" as="image" href="./watermark.png">
+<link rel="preload" as="image" href="./latest-video.jpg">
+<link rel="icon" type="image/png" href="./favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse videos from the FinchyNoz network.">
+  <title>Videos | FinchyNoz</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div id="loading-screen">
+    <div class="loading-logo">
+      <img src="logo.png" alt="FinchyNoz logo">
+      <h2>3008</h2>
+    </div>
+  </div>
+
+  <div id="background"></div>
+
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="FinchyNoz home">
+      <img src="logo.png" alt="FinchyNoz logo">
+      <span>FINCHYNOZ</span>
+    </a>
+
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="videos.html" class="active">VIDEOS</a></li>
+      <li><a href="channels.html">CHANNELS</a></li>
+      <li><a href="music.html">MUSIC</a></li>
+      <li><a href="3008.html">3008</a></li>
+ <li><a href="./itsjonathan.html">OTHER</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="page-hero compact-hero">
+      <img src="watermark.png" alt="" class="page-symbol">
+      <p class="page-code">ARCHIVE 3008</p>
+      <h1>VIDEO DATABASE</h1>
+      <p class="page-intro">
+        Finished uploads only. Future videos appear here after the thumbnail and upload are ready.
+      </p>
+    </section>
+
+    <section id="video-browser">
+      <div class="section-heading">
+        <div>
+          <p class="section-code">SELECT CHANNEL</p>
+          <h2>Browse the Archive</h2>
+        </div>
+        <p id="video-count">01 FILE FOUND</p>
+      </div>
+
+      <div class="video-filters" role="group" aria-label="Filter videos by channel">
+        <button class="filter-button active" data-filter="all" type="button">ALL</button>
+        <button class="filter-button" data-filter="finchynoz" type="button">FINCHYNOZ</button>
+        <button class="filter-button" data-filter="j" type="button">J</button>
+        <button class="filter-button" data-filter="vazen" type="button">VAZEN</button>
+        <button class="filter-button" data-filter="afterdark" type="button">AFTER DARK</button>
+      </div>
+
+      <div class="archive-grid">
+        <article class="archive-card" data-channel="finchynoz">
+          <a href="https://youtu.be/ag5mZYPyeRw?si=jlBmvpYePVqRSQdr" target="_blank" rel="noopener noreferrer">
+            <div class="archive-thumbnail">
+              <img src="latest-video.jpg" alt="UNDERTALE Part 2 thumbnail">
+              <span class="archive-duration">28:23</span>
+              <span class="archive-label">FINCHYNOZ</span>
+            </div>
+            <div class="archive-information">
+              <p class="archive-file">FILE 001</p>
+              <h3>It Took Me This Long to Beat a Dummy?</h3>
+              <p>UNDERTALE Part 2</p>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <div class="empty-archive" id="empty-archive" hidden>
+        <img src="watermark.png" alt="">
+        <p class="section-code">NO FILES DETECTED</p>
+        <h3>Nothing has been uploaded here yet.</h3>
+        <p>Once a finished video exists, add its thumbnail and card to this archive.</p>
+      </div>
+    </section>
+
+    <section class="archive-cta">
+      <img src="watermark.png" alt="">
+      <p class="section-code">ARCHIVE GROWING</p>
+      <h2>New files appear after each finished upload.</h2>
+      <a href="channels.html" class="primary-link">VIEW ALL CHANNELS</a>
+    </section>
+  </main>
+
+  
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const cards = document.querySelectorAll(".archive-card");
+    const count = document.getElementById("video-count");
+    const empty = document.getElementById("empty-archive");
+
+    function filterVideos(filter) {
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.channel === filter;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      count.textContent = `${visible.toString().padStart(2, "0")} FILE${visible === 1 ? "" : "S"} FOUND`;
+      empty.hidden = visible !== 0;
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        filterVideos(button.dataset.filter);
+      });
+    });
+
+<footer>
+    <img src="watermark.png" alt="FinchyNoz diamond symbol">
+    <h2>3008</h2>
+    <p>Experience Everything.</p>
+  </footer>
+
+  </script>
+</body>
+</html>
